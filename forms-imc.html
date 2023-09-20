@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calcular IMC</title>
+    <script>
+
+        function click_calcular() {
+            let altura = document.getElementById("altura").value;
+            let massa = document.getElementById("massa").value;
+            if (altura == "") {
+                alert("Informe a sua altura");
+            } else if (massa == "") {
+                alert("Informe o seu peso");
+            } else {
+                let Calculo = Number(massa) / (Number(altura) * Number(altura));
+                document.getElementById("calculo").value = Calculo;
+                if (Calculo < 18.6) {
+
+                    document.getElementById("calculo").style.background = "blue";
+
+                }
+                else if (Calculo > 18.5 && Calculo < 25) {
+
+                    document.getElementById("calculo").style.background = "green";
+
+                }
+                else if (Calculo > 24.9 && Calculo < 30) {
+
+                    document.getElementById("calculo").style.background = "yellow";
+
+                }
+                else if (Calculo > 29.9 && Calculo < 35) {
+                    document.getElementById("calculo").style.background = "orange";
+
+                }
+                else if (Calculo > 34.9 && Calculo < 30) {
+                    document.getElementById("calculo").style.background = "#FA4C37";
+
+                }
+                else if (Calculo > 40) {
+                    document.getElementById("calculo").style.background = "#FA0101";
+
+                }
+
+            }
+        }
+
+        function click_apagar() {
+            document.getElementById("altura").value = "";
+            document.getElementById("massa").value = "";
+            document.getElementById("calculo").value = "";
+        }
+    </script>
+</head>
+
+<body>
+    <form class="forms">
+        <h1>Informaçãos pessoais</h1>
+        <div>
+            <label for="altura">Informe sua altura:</label><br>
+            <input type="number" id="altura" name=" "><br>
+        </div>
+        <div>
+            <label for="massa">Informe sua massa corporal</label><br>
+            <input type="number" id="massa" name=" "><br>
+        </div>
+        <div>
+            <label for="calculo">Calculo:</label>
+            <input type="number" name="" id="calculo" disabled>
+        </div>
+        <div>
+            <input type="button" value="Calcular" onclick="click_calcular();">
+
+            <input type="button" value="Apagar" onclick="click_apagar();">
+        </div>
+    </form>
+</body>
+
+</html>
